@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Number Hack v4.9 Download</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=El+Messiri:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #121212;
+            font-family: 'El Messiri', sans-serif;
+            overflow-x: hidden;
+        }
+
+        .content-wrapper {
+            background-color: #1E1E1E;
+            padding: 30px 25px;
+            border-radius: 25px;
+            border: 3px solid #FFD700;
+            box-shadow: 0 0 15px #FFD700, 0 0 25px #FFD700;
+            text-align: center;
+            width: 90%;
+            max-width: 380px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .app-icon {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            object-fit: cover;
+            border: 2px solid rgba(255, 215, 0, 0.5);
+        }
+
+        .app-title {
+            color: #FFD700;
+            font-family: 'Orbitron', sans-serif;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            text-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 14px 20px;
+            margin-bottom: 15px;
+            border: none;
+            border-radius: 15px;
+            font-size: 17px;
+            font-weight: 600;
+            font-family: 'El Messiri', sans-serif;
+            cursor: pointer;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .btn:last-child {
+            margin-bottom: 0;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:active {
+            transform: translateY(-1px);
+        }
+
+        .btn-download {
+            background-color: #FFD700;
+            color: #1E1E1E;
+        }
+
+        .btn-telegram {
+            background-color: #0088CC;
+            color: white;
+        }
+
+        .btn-how-to-use {
+            background-color: #8A2BE2;
+            color: white;
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <!-- LOGO INSERTED HERE -->
+        <img src="https://i.ibb.co/cdPRN41/Meta-AI-Generated.jpg" alt="App Icon" class="app-icon" id="appIcon">
+        <h1 class="app-title">Number Hack v4.9</h1>
+        <button class="btn btn-download" onclick="handleButtonClick(this, startDownload)">Download APK</button>
+        <button class="btn btn-telegram" onclick="handleButtonClick(this, joinTelegram)">Join Telegram</button>
+        <button class="btn btn-how-to-use" onclick="handleButtonClick(this, showHowToUse)">How To Use</button>
+    </div>
+
+    <script>
+        gsap.to(".content-wrapper", {
+            boxShadow: "0 0 25px #FFD700, 0 0 40px #FFD700, 0 0 15px #FFD700",
+            duration: 1.5,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+
+        function createRipple(event, buttonElement) {
+            const ripple = document.createElement("span");
+            ripple.classList.add("ripple");
+            const rect = buttonElement.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            ripple.style.width = ripple.style.height = size + "px";
+            ripple.style.left = event.clientX - rect.left - size / 2 + "px";
+            ripple.style.top = event.clientY - rect.top - size / 2 + "px";
+
+            buttonElement.appendChild(ripple);
+            setTimeout(() => ripple.remove(), 600);
+        }
+
+        function handleButtonClick(buttonElement, actionFunction) {
+            const rect = buttonElement.getBoundingClientRect();
+            const dummyEvent = {
+                clientX: rect.left + rect.width / 2,
+                clientY: rect.top + rect.height / 2
+            };
+            createRipple(dummyEvent, buttonElement);
+
+            if (actionFunction) {
+                actionFunction();
+            }
+        }
+
+        function startDownload() {
+            console.log("Download APK clicked");
+            const fileUrl = "https://github.com/Pardeep-phx/Iamphx/raw/refs/heads/main/𝗜-𝗔𝗠-PHX_1.8.apk";
+            const fileName = "NumberHack_v4.9.apk";
+
+            const link = document.createElement('a');
+            link.href = fileUrl;
+            link.download = fileName;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+
+            gsap.fromTo(".btn-download", {scale: 1}, {scale: 0.95, duration: 0.1, yoyo: true, repeat: 1, ease: "power1.inOut"});
+        }
+
+        function joinTelegram() {
+            console.log("Join Telegram clicked");
+            window.open('https://t.me/+NuRKxyPVVsM3ZjNl', '_blank');
+        }
+
+        function showHowToUse() {
+            console.log("How To Use clicked");
+            alert("Instructions on how to use the app will be shown here.");
+        }
+    </script>
+</body>
+</html>
